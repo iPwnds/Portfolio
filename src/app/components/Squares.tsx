@@ -1,21 +1,40 @@
-import { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import './style/Squares.css';
 
-const Squares = ({
-                     direction = 'right',
-                     speed = 1,
-                     borderColor = '#999',
-                     squareSize = 40,
-                     hoverFillColor = '#222',
-                 }) => {
-    const canvasRef = useRef(null);
-    const requestRef = useRef(null);
-    const numSquaresX = useRef();
-    const numSquaresY = useRef();
-    const gridOffset = useRef({ x: 0, y: 0 });
-    const [hoveredSquare, setHoveredSquare] = useState(null);
+type CanvasStrokeStyle = string | CanvasGradient | CanvasPattern;
+
+interface GridOffset {
+    x: number;
+    y: number;
+}
+
+interface SquaresProps {
+    direction?: 'diagonal' | 'up' | 'right' | 'down' | 'left';
+    speed?: number;
+    borderColor?: CanvasStrokeStyle;
+    squareSize?: number;
+    hoverFillColor?: CanvasStrokeStyle;
+}
+
+const Squares: React.FC<SquaresProps> = ({
+                                             direction = 'right',
+                                             speed = 1,
+                                             borderColor = '#999',
+                                             squareSize = 40,
+                                             hoverFillColor = '#222',
+                                         }) => {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const requestRef = useRef<number | null>(null);
+    const numSquaresX = useRef<number>(0);
+    const numSquaresY = useRef<number>(0);
+    const gridOffset = useRef<GridOffset>({ x: 0, y: 0 });
+    const [hoveredSquare, setHoveredSquare] = useState<GridOffset | null>(null);
 
     useEffect(() => {
         const canvas = canvasRef.current;
+
+        if (!canvas) return;
+
         const ctx = canvas.getContext('2d');
 
         const resizeCanvas = () => {
@@ -29,6 +48,8 @@ const Squares = ({
         resizeCanvas();
 
         const drawGrid = () => {
+            if (!ctx) return;
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             const startX = Math.floor(gridOffset.current.x / squareSize) * squareSize;
@@ -96,7 +117,7 @@ const Squares = ({
         };
 
         // Track mouse hover
-        const handleMouseMove = (event) => {
+        const handleMouseMove = (event: MouseEvent) => {
             const rect = canvas.getBoundingClientRect();
             const mouseX = event.clientX - rect.left;
             const mouseY = event.clientY - rect.top;
@@ -121,13 +142,13 @@ const Squares = ({
 
         return () => {
             window.removeEventListener('resize', resizeCanvas);
-            cancelAnimationFrame(requestRef.current);
+            if (requestRef.current) cancelAnimationFrame(requestRef.current);
             canvas.removeEventListener('mousemove', handleMouseMove);
             canvas.removeEventListener('mouseleave', handleMouseLeave);
         };
     }, [direction, speed, borderColor, hoverFillColor, hoveredSquare, squareSize]);
 
-    return <canvas ref={canvasRef} className="w-full h-full border-none block"></canvas>;
+    return <canvas ref={canvasRef} className="squares-canvas"></canvas>;
 };
 
 export default Squares;

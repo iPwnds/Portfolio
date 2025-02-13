@@ -5,6 +5,8 @@ import Aurora from './components/Aurora';
 import Dock from './components/Dock';
 import { VscHome, VscArchive, VscAccount, VscSettingsGear } from 'react-icons/vsc';
 import SpotlightCard from './components/SpotlightCard';
+import ShinyText from './components/ShinyText';
+import GradientText from './components/GradientText';
 
 const items = [
     { icon: <VscHome size={18} />, label: 'Home', onClick: () => alert('Home!') },
@@ -29,30 +31,72 @@ export default function Page() {
                         className="w-72 h-96 bg-black/10 backdrop-blur-sm rounded-xl p-6 flex flex-col items-center justify-center"
                         spotlightColor="rgba(0, 229, 255, 0.2)"
                     >
-                        <h2 className="text-2xl font-bold text-white mb-4">Projects</h2>
-                        <p className="text-white/80 text-center">
-                            Explore my latest software development projects and contributions
-                        </p>
+                        <h2 className="text-2xl font-bold text-white mb-4">
+                            <GradientText
+                                colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                                animationSpeed={3}
+                                showBorder={false}
+                                className="custom-class"
+                            >
+                                Projects
+                            </GradientText>
+                        </h2>
+                        <div className="text-white/80 text-center">
+                            <ShinyText
+                                text="Explore my latest software development projects and contributions"
+                                disabled={false}
+                                speed={3}
+                                className='custom-class'
+                            />
+                        </div>
                     </SpotlightCard>
 
                     <SpotlightCard
                         className="w-72 h-96 bg-black/10 backdrop-blur-sm rounded-xl p-6 flex flex-col items-center justify-center"
                         spotlightColor="rgba(0, 229, 255, 0.2)"
                     >
-                        <h2 className="text-2xl font-bold text-white mb-4">Skills</h2>
-                        <p className="text-white/80 text-center">
-                            Overview of my technical skills and expertise in various technologies
-                        </p>
+                        <h2 className="text-2xl font-bold text-white mb-4">
+                            <GradientText
+                                colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                                animationSpeed={3}
+                                showBorder={false}
+                                className="custom-class"
+                            >
+                                Skills
+                            </GradientText>
+                        </h2>
+                        <div className="text-white/80 text-center">
+                            <ShinyText
+                                text="Overview of my technical skills and expertise in various technologies"
+                                disabled={false}
+                                speed={3}
+                                className='custom-class'
+                            />
+                        </div>
                     </SpotlightCard>
 
                     <SpotlightCard
                         className="w-72 h-96 bg-black/10 backdrop-blur-sm rounded-xl p-6 flex flex-col items-center justify-center"
                         spotlightColor="rgba(0, 229, 255, 0.2)"
                     >
-                        <h2 className="text-2xl font-bold text-white mb-4">Contact</h2>
-                        <p className="text-white/80 text-center">
-                            Get in touch with me for collaborations and opportunities
-                        </p>
+                        <h2 className="text-2xl font-bold text-white mb-4">
+                            <GradientText
+                                colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                                animationSpeed={3}
+                                showBorder={false}
+                                className="custom-class"
+                            >
+                                Contact
+                            </GradientText>
+                        </h2>
+                        <div className="text-white/80 text-center">
+                            <ShinyText
+                                text="Get in touch with me for collaborations and opportunities"
+                                disabled={false}
+                                speed={3}
+                                className='custom-class'
+                            />
+                        </div>
                     </SpotlightCard>
                 </div>
             </div>
