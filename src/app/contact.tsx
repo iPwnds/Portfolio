@@ -15,10 +15,10 @@ export default function Page() {
     const router = useRouter();
 
     const items = [
-        { icon: <VscHome size={18} />, label: 'Home', onClick: () => router.push('/') },
+        { icon: <VscHome size={18} />, label: 'Home', onClick: () => router.push('/page') },
         { icon: <VscInfo size={18} />, label: 'About', onClick: () => router.push('/about') },
         { icon: <VscGithub size={18} />, label: 'Projects', onClick: () => router.push('/projects') },
-        { icon: <VscAccount size={18} />, label: 'Contact', onClick: () => router.push('/contact') },
+        { icon: <VscAccount size={18} />, label: 'Contact', onClick: () => router.push('/') },
     ];
 
     return (
@@ -109,14 +109,14 @@ export default function Page() {
             </div>
 
             {/*<FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>*/}
-                <div className="fixed bottom-0 left-0 right-0 z-20">
-                    <Dock
-                        items={items}
-                        panelHeight={68}
-                        baseItemSize={50}
-                        magnification={70}
-                    />
-                </div>
+            <div className="fixed bottom-0 left-0 right-0 z-20">
+                <Dock
+                    items={items}
+                    panelHeight={68}
+                    baseItemSize={50}
+                    magnification={70}
+                />
+            </div>
             {/*</FadeContent>*/}
         </div>
     );
