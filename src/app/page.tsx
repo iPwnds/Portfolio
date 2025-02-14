@@ -7,13 +7,13 @@ import { VscHome, VscArchive, VscAccount, VscSettingsGear } from 'react-icons/vs
 import SpotlightCard from './components/SpotlightCard';
 import ShinyText from './components/ShinyText';
 import GradientText from './components/GradientText';
-import FadeContent from './components/FadeContent'
+import FadeContent from './components/FadeContent';
 
 const items = [
-    { icon: <VscHome size={18} />, label: 'Home', onClick: () => alert('Home!') },
-    { icon: <VscArchive size={18} />, label: 'Archive', onClick: () => alert('Archive!') },
-    { icon: <VscAccount size={18} />, label: 'Profile', onClick: () => alert('Profile!') },
-    { icon: <VscSettingsGear size={18} />, label: 'Settings', onClick: () => alert('Settings!') },
+    { icon: <VscHome size={18} />, label: 'Home', onClick: () => router.push('/') },
+    { icon: <VscArchive size={18} />, label: 'Archive', onClick: () => router.push('/about') },
+    { icon: <VscAccount size={18} />, label: 'Profile', onClick: () => router.push('/projects') },
+    { icon: <VscSettingsGear size={18} />, label: 'Settings', onClick: () => router.push('/contact') },
 ];
 
 export default function Page() {
@@ -104,7 +104,7 @@ export default function Page() {
                 </FadeContent>
             </div>
 
-            <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+            {/*<FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>*/}
                 <div className="fixed bottom-0 left-0 right-0 z-20">
                     <Dock
                         items={items}
@@ -113,7 +113,7 @@ export default function Page() {
                         magnification={70}
                     />
                 </div>
-            </FadeContent>
+            {/*</FadeContent>*/}
         </div>
     );
 }
