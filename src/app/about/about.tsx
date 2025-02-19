@@ -1,22 +1,20 @@
-'use client';
-
 import React from 'react';
 import { useRouter } from 'next/navigation'
-import Aurora from './components/Aurora';
-import Dock from './components/Dock';
+import Aurora from '../components/Aurora';
+import Dock from '../components/Dock';
 import { VscHome, VscInfo, VscGithub, VscAccount } from 'react-icons/vsc';
-import SpotlightCard from './components/SpotlightCard';
-import ShinyText from './components/ShinyText';
-import GradientText from './components/GradientText';
-import FadeContent from './components/FadeContent';
+import SpotlightCard from '../components/SpotlightCard';
+import ShinyText from '../components/ShinyText';
+import GradientText from '../components/GradientText';
+import FadeContent from '../components/FadeContent';
 
-export default function Page() {
+export default function About() {
 
     const router = useRouter();
 
     const items = [
-        { icon: <VscHome size={18} />, label: 'Home', onClick: () => router.push('/page') },
-        { icon: <VscInfo size={18} />, label: 'About', onClick: () => router.push('/') },
+        { icon: <VscHome size={18} />, label: 'Home', onClick: () => router.push('/') },
+        { icon: <VscInfo size={18} />, label: 'About', onClick: () => router.push('/about') },
         { icon: <VscGithub size={18} />, label: 'Projects', onClick: () => router.push('/projects') },
         { icon: <VscAccount size={18} />, label: 'Contact', onClick: () => router.push('/contact') },
     ];
