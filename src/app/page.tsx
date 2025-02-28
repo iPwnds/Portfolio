@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import React from 'react';
+import { useRouter } from 'next/navigation'
 import Aurora from './components/Aurora';
 import Dock from './components/Dock';
 import { VscHome, VscInfo, VscGithub, VscAccount, VscCode, VscMortarBoard } from 'react-icons/vsc';
@@ -11,13 +11,8 @@ import GradientText from './components/GradientText';
 import FadeContent from './components/FadeContent';
 
 export default function Page() {
-    const [isLoaded, setIsLoaded] = useState(false);
-    const router = useRouter();
 
-    useEffect(() => {
-        // Add loading animation
-        setIsLoaded(true);
-    }, []);
+    const router = useRouter();
 
     const items = [
         { icon: <VscHome size={20} />, label: 'Home', onClick: () => router.push('/') },
@@ -32,19 +27,19 @@ export default function Page() {
         {
             title: "Projects",
             description: "Explore my latest software development projects and contributions",
-            action: () => router.push('/projects'),
+            // action: () => router.push('/projects'),
             icon: <VscGithub size={32} className="mb-4 text-white/90" />
         },
         {
             title: "Skills",
             description: "Overview of my technical skills and expertise in various technologies",
-            action: () => router.push('/skills'),
+            // action: () => router.push('/skills'),
             icon: <VscCode size={32} className="mb-4 text-white/90" />
         },
         {
             title: "Contact",
             description: "Get in touch with me for collaborations and opportunities",
-            action: () => router.push('/contact'),
+            // action: () => router.push('/contact'),
             icon: <VscAccount size={32} className="mb-4 text-white/90" />
         }
     ];
@@ -59,7 +54,6 @@ export default function Page() {
             </div>
 
             <main className="relative z-10 flex min-h-screen flex-col items-center justify-center gap-8 px-4">
-                {/* Hero Section */}
                 <FadeContent blur={true} duration={500} easing="ease-out" initialOpacity={0}>
                     <div className="text-center mb-12">
                         <h1 className="text-5xl md:text-6xl font-bold mb-4">
@@ -68,12 +62,12 @@ export default function Page() {
                                 animationSpeed={3}
                                 showBorder={false}
                             >
-                                Your Name
+                                Florian Braun
                             </GradientText>
                         </h1>
                         <div className="text-xl text-white/80 max-w-2xl mx-auto">
                             <ShinyText
-                                text="Software Developer & Designer specializing in modern web applications and user experiences"
+                                text="Computer Science student by day, tech entrepreneur by night. Building the future one line of code at a time."
                                 disabled={false}
                                 speed={2}
                             />
@@ -81,7 +75,6 @@ export default function Page() {
                     </div>
                 </FadeContent>
 
-                {/* Cards Section */}
                 <FadeContent blur={true} duration={800} easing="ease-out" initialOpacity={0} delay={200}>
                     <div className="flex flex-wrap justify-center gap-6">
                         {cards.map((card, index) => (
@@ -89,7 +82,7 @@ export default function Page() {
                                 key={index}
                                 className="w-72 h-96 bg-black/20 backdrop-blur-lg rounded-xl p-6 flex flex-col items-center justify-center cursor-pointer transition-all duration-300 hover:scale-105"
                                 spotlightColor="rgba(70, 131, 255, 0.3)"
-                                onClick={card.action}
+                                // onClick={card.action}
                             >
                                 {card.icon}
                                 <h2 className="text-2xl font-bold text-white mb-4">
@@ -114,6 +107,7 @@ export default function Page() {
                 </FadeContent>
             </main>
 
+            {/*<FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0} delay={400}>*/}
                 <div className="fixed bottom-0 left-0 right-0 z-20">
                     <Dock
                         items={items}
@@ -122,6 +116,7 @@ export default function Page() {
                         magnification={70}
                     />
                 </div>
+            {/*</FadeContent>*/}
         </div>
     );
 }
